@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI floorText;
+    public Button[] doorButtons;
+
 
     public void OpenDoor(int doorType)
     {
@@ -30,12 +33,12 @@ public class GameManager : MonoBehaviour
             hp = 0;
             eventText.text = "Game Over!";
             Debug.Log("Game Over!");
+            SetDoorsInteractable(false);
         }
         else
         {
             floor++;
         }
-
         UpdateUi();
     }
 
@@ -121,6 +124,14 @@ public class GameManager : MonoBehaviour
         goldText.text = "GOLD: " + gold;
     }
 
+    public void SetDoorsInteractable(bool value)
+    {
+        foreach (Button button in doorButtons)
+        {
+            button.interactable = value;
+        }
+    }
+
     public void RestartGame()
     {
         isGameOver = false;
@@ -128,12 +139,14 @@ public class GameManager : MonoBehaviour
         gold = 0;
         floor = 1;
         eventText.text = "Choose a door...";
+        SetDoorsInteractable(true);
         UpdateUi();
     }
 
     private void Start()
     {
         eventText.text = "Choose a door...";
+        SetDoorsInteractable(true);
         UpdateUi();
     }
 }

@@ -969,6 +969,10 @@ MonoBehaviour:
   goldText: {fileID: 1207262003}
   eventText: {fileID: 702493896}
   floorText: {fileID: 1770109319}
+  doorButtons:
+  - {fileID: 278349958}
+  - {fileID: 1578786262}
+  - {fileID: 147488336}
 --- !u!4 &951543414
 Transform:
   m_ObjectHideFlags: 0
