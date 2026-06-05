@@ -1,4 +1,4 @@
-# Doors Tower — Dev Log v0.2
+# Doors Tower — Dev Log v0.3
 
 ## Project Status
 
@@ -24,16 +24,17 @@ Restart run
 
 ## Current Features
 
-- HP System
-- Gold System
-- Floor Progression
-- Game Over
-- Restart System
-- Three Door Types
-- Random Events
-- Floor-based Damage Scaling
-- HP Cap (100)
-- Event Log Messages
+* HP System
+* Gold System
+* Floor Progression
+* Game Over
+* Restart System
+* Three Door Types
+* Random Events
+* Floor-based Damage Scaling
+* HP Cap (100)
+* Event Log Messages
+* Door Disable On Death
 
 ---
 
@@ -126,6 +127,8 @@ ApplyHeal(...)
 ApplyMonster(...)
 
 UpdateUi(...)
+SetDoorsInteractable(...)
+
 RestartGame(...)
 Start()
 ```
@@ -145,10 +148,10 @@ ResolveDoorEvent(...)
 
 Benefits:
 
-- Less duplicated code
-- Easier balancing
-- Easier future expansion
-- Better readability
+* Less duplicated code
+* Easier balancing
+* Easier future expansion
+* Better readability
 
 ---
 
@@ -175,30 +178,60 @@ When HP reaches zero:
 ```text
 Game Over
 Door actions blocked
+Door buttons disabled
 Restart available
+Door buttons restored on restart
 ```
+
+---
+
+## Feature Implemented — Door Disable On Death
+
+Description:
+
+```text
+When the player reaches 0 HP,
+all door buttons become non-interactable.
+
+When the game is restarted,
+all door buttons are restored automatically.
+```
+
+Implementation:
+
+```text
+Button[] doorButtons
+SetDoorsInteractable(bool value)
+Button.interactable
+foreach loop
+```
+
+Benefits:
+
+* Prevents invalid interactions after Game Over
+* Improves game feedback
+* Introduces scalable button management
 
 ---
 
 ## Known Improvements
 
-- Disable door buttons visually after Game Over
-- Add final score screen
-- Add best run tracking
-- Add win condition
-- Add shop system
-- Add audio feedback
-- Improve UI polish
+* Add final score screen
+* Add best run tracking
+* Add win condition
+* Add shop system
+* Add audio feedback
+* Improve UI polish
 
 ---
 
 ## Next Feature Candidates
 
 ```text
-Win Condition
+Final Score Screen
 Best Run Tracking
+Win Condition
 Shop System
-Door Disable On Death
 Audio System
 Save System
 ```
@@ -214,12 +247,21 @@ MonoBehaviour
 Canvas UI
 TextMeshPro
 Button Events
+Button References
+Button Arrays
+Button.interactable
+
 Game State Management
 Method Parameters
 Refactoring
+foreach
+
 Random.Range()
 Debug.Log()
+
 Git Basics
+Feature Branch Workflow
+Git Merge Workflow
 GitHub Repository Management
 ```
 
@@ -231,5 +273,9 @@ GitHub Repository Management
 Playable Prototype
 
 Core gameplay loop completed.
-Ready for first gameplay expansion.
+
+Gameplay polish feature completed:
+- Door Disable On Death
+
+Ready for Final Score Screen implementation.
 ```
