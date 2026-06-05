@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI eventText;
     public TextMeshProUGUI floorText;
     public Button[] doorButtons;
+    public GameObject finalScorePanel;
+    public TextMeshProUGUI finalFloorText;
+    public TextMeshProUGUI finalGoldText;
 
 
     public void OpenDoor(int doorType)
@@ -31,8 +34,12 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             hp = 0;
+
+            finalFloorText.text = "Final Floor: " + floor;
+            finalGoldText.text = "Gold Collected: " + gold;
+            finalScorePanel.SetActive(true);
+
             eventText.text = "Game Over!";
-            Debug.Log("Game Over!");
             SetDoorsInteractable(false);
         }
         else
@@ -139,6 +146,7 @@ public class GameManager : MonoBehaviour
         gold = 0;
         floor = 1;
         eventText.text = "Choose a door...";
+        finalScorePanel.SetActive(false);
         SetDoorsInteractable(true);
         UpdateUi();
     }
@@ -146,6 +154,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         eventText.text = "Choose a door...";
+        finalScorePanel.SetActive(false);
         SetDoorsInteractable(true);
         UpdateUi();
     }
