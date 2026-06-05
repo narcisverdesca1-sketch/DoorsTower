@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finalFloorText;
     public TextMeshProUGUI finalGoldText;
 
+    private int bestFloor = 1;
+    private int bestGold = 0;
 
     public void OpenDoor(int doorType)
     {
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             hp = 0;
+           UpdateBestRun();
 
             finalFloorText.text = "Final Floor: " + floor;
             finalGoldText.text = "Gold Collected: " + gold;
@@ -157,5 +160,10 @@ public class GameManager : MonoBehaviour
         finalScorePanel.SetActive(false);
         SetDoorsInteractable(true);
         UpdateUi();
+    }
+
+    private void UpdateBestRun()
+    {
+
     }
 }
