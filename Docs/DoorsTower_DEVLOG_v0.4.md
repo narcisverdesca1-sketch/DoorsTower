@@ -1,4 +1,4 @@
-# Doors Tower — Dev Log v0.3
+# Doors Tower — Dev Log v0.4
 
 ## Project Status
 
@@ -16,6 +16,8 @@ Gain gold / lose HP / heal HP
 Advance to next floor
 ↓
 Repeat until Game Over
+↓
+View Final Score
 ↓
 Restart run
 ```
@@ -35,6 +37,7 @@ Restart run
 * HP Cap (100)
 * Event Log Messages
 * Door Disable On Death
+* Final Score Screen
 
 ---
 
@@ -179,6 +182,7 @@ When HP reaches zero:
 Game Over
 Door actions blocked
 Door buttons disabled
+Final Score Screen displayed
 Restart available
 Door buttons restored on restart
 ```
@@ -208,15 +212,55 @@ foreach loop
 
 Benefits:
 
-* Prevents invalid interactions after Game Over
-* Improves game feedback
-* Introduces scalable button management
+```text
+Prevents invalid interactions after Game Over
+Improves game feedback
+Introduces scalable button management
+```
+
+---
+
+## Feature Implemented — Final Score Screen
+
+Description:
+
+```text
+When the player dies,
+a Final Score Screen is displayed.
+
+The screen shows:
+
+- Final Floor reached
+- Gold Collected
+- Restart button
+```
+
+Implementation:
+
+```text
+FinalScorePanel
+
+TextMeshProUGUI:
+- FinalFloorText
+- FinalGoldText
+
+GameObject.SetActive(true)
+GameObject.SetActive(false)
+```
+
+Benefits:
+
+```text
+Provides run summary
+Improves player feedback
+Creates a clearer game over state
+Prepares future progression systems
+```
 
 ---
 
 ## Known Improvements
 
-* Add final score screen
 * Add best run tracking
 * Add win condition
 * Add shop system
@@ -228,7 +272,6 @@ Benefits:
 ## Next Feature Candidates
 
 ```text
-Final Score Screen
 Best Run Tracking
 Win Condition
 Shop System
@@ -259,6 +302,11 @@ foreach
 Random.Range()
 Debug.Log()
 
+GameObject.SetActive()
+UI Panels
+UI State Management
+Runtime UI Updates
+
 Git Basics
 Feature Branch Workflow
 Git Merge Workflow
@@ -274,8 +322,10 @@ Playable Prototype
 
 Core gameplay loop completed.
 
-Gameplay polish feature completed:
-- Door Disable On Death
+Gameplay polish features completed:
 
-Ready for Final Score Screen implementation.
+- Door Disable On Death
+- Final Score Screen
+
+Ready for Best Run Tracking implementation.
 ```
