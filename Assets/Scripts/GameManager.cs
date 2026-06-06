@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject finalScorePanel;
     public TextMeshProUGUI finalFloorText;
     public TextMeshProUGUI finalGoldText;
+    public TextMeshProUGUI bestFloorText;
+    public TextMeshProUGUI bestGoldText;
 
     private int bestFloor = 1;
     private int bestGold = 0;
@@ -36,7 +38,7 @@ public class GameManager : MonoBehaviour
         {
             isGameOver = true;
             hp = 0;
-           UpdateBestRun();
+            UpdateBestRun();
 
             finalFloorText.text = "Final Floor: " + floor;
             finalGoldText.text = "Gold Collected: " + gold;
@@ -162,8 +164,22 @@ public class GameManager : MonoBehaviour
         UpdateUi();
     }
 
+
+
     private void UpdateBestRun()
     {
+        if (floor > bestFloor)
+        {
+            bestFloor = floor;
+            bestGold = gold;
+        }
+        else if (floor == bestFloor && gold > bestGold)
+        {
+            bestFloor = floor;
+            bestGold = gold;
+        }
 
+        bestFloorText.text = "Best Floor: " + bestFloor;
+        bestGoldText.text = "Best Gold: " + bestGold;
     }
 }
